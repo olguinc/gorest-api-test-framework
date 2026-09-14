@@ -148,3 +148,10 @@ gorest-api-test-framework/
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+
+## 👩🏻‍💻 Author
+
+**Carolina Olguin** — Senior QA Engineer · [GitHub](https://github.com/olguinc) · [LinkedIn](https://www.linkedin.com/in/carolina-olg/) · [Portfolio](https://olguinc.github.io/)
+
+> *"The best tests don't just find bugs — they document the expected behavior of the system."*
