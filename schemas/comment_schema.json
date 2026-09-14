@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "required": ["id", "post_id", "name", "email", "body"],
+  "properties": {
+    "id": {"type": "integer"},
+    "post_id": {"type": "integer"},
+    "name": {"type": "string"},
+    "email": {"type": "string", "format": "email"},
+    "body": {"type": "string"}
+  },
+  "additionalProperties": false
+}

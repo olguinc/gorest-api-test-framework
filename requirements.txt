@@ -1,0 +1,8 @@
+requests==2.32.3
+python-dotenv==1.0.1
+Faker==29.0.0
+jsonschema==4.23.0
+pytest==8.3.3
+pytest-xdist==3.6.1
+allure-pytest==2.13.5
+ruff==0.7.1

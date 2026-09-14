@@ -1,0 +1,18 @@
+[tool.pytest.ini_options]
+markers = [
+    "smoke: fast sanity subset, one or two checks per resource (runs on every push/PR)",
+    "crud: create/read/update/delete positive-path tests",
+    "negative: invalid input / error-path tests",
+    "schema: JSON schema / contract validation tests",
+    "e2e: chained, multi-resource workflow tests",
+]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+addopts = "-ra --strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
