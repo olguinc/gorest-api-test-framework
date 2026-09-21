@@ -1,8 +1,0 @@
-INFO gorest_client: --> POST https://gorest.co.in/public/v2/users headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer ***', 'Content-Type': 'application/json'} {'json': {'name': 'Mitchell Stone', 'email': 'johnsonbobby@example.org', 'gender': 'male', 'status': 'inactive'}}
-INFO gorest_client: <-- POST https://gorest.co.in/public/v2/users 201 (0.431s)
-INFO gorest_client: --> POST https://gorest.co.in/public/v2/users/8633349/todos headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer ***', 'Content-Type': 'application/json'} {'json': {'title': 'Him fine establish management pick.', 'due_on': '2026-10-19T00:00:00.000+05:30', 'status': 'completed'}}
-INFO gorest_client: <-- POST https://gorest.co.in/public/v2/users/8633349/todos 201 (0.868s)
-INFO gorest_client: --> DELETE https://gorest.co.in/public/v2/todos/110942 headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer ***', 'Content-Type': 'application/json'} {}
-INFO gorest_client: <-- DELETE https://gorest.co.in/public/v2/todos/110942 204 (0.349s)
-INFO gorest_client: --> DELETE https://gorest.co.in/public/v2/users/8633349 headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer ***', 'Content-Type': 'application/json'} {}
-INFO gorest_client: <-- DELETE https://gorest.co.in/public/v2/users/8633349 204 (0.366s)
