@@ -1,0 +1,4 @@
+INFO     gorest_client:logger.py:20 --> POST https://gorest.co.in/public/v2/users headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer ***', 'Content-Type': 'application/json'} {'json': {'name': 'Michael Brown', 'email': 'jason31@example.net', 'gender': 'male', 'status': 'active'}}
+INFO     gorest_client:logger.py:24 <-- POST https://gorest.co.in/public/v2/users 201 (0.388s)
+INFO     gorest_client:logger.py:20 --> DELETE https://gorest.co.in/public/v2/users/8633298 headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer ***', 'Content-Type': 'application/json'} {}
+INFO     gorest_client:logger.py:24 <-- DELETE https://gorest.co.in/public/v2/users/8633298 204 (0.406s)
