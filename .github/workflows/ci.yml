@@ -8,6 +8,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
     steps:
@@ -27,28 +29,39 @@ jobs:
       - name: Run smoke tests
         run: pytest -m smoke --alluredir=reports/allure-results
 
-      - name: Get Allure history
-        uses: actions/checkout@v4
+      - name: Carry forward Allure trend history
         if: always()
         continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
+        run: |
+          git fetch origin gh-pages:gh-pages --depth=1 2>/dev/null || true
+          git worktree add /tmp/gh-pages gh-pages 2>/dev/null || true
+          mkdir -p reports/allure-results/history
+          cp -r /tmp/gh-pages/history/. reports/allure-results/history/ 2>/dev/null || true
 
-      - name: Build Allure report
-        uses: simple-elf/allure-report-action@v1.9
+      - name: Set up Java (required by the Allure CLI)
         if: always()
+        uses: actions/setup-java@v4
         with:
-          allure_results: reports/allure-results
-          allure_history: allure-history
-          gh_pages: gh-pages
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install Allure commandline
+        if: always()
+        run: |
+          curl -o "$RUNNER_TEMP/allure.zip" -sL https://github.com/allure-framework/allure2/releases/download/2.29.0/allure-2.29.0.zip
+          unzip -q "$RUNNER_TEMP/allure.zip" -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/allure-2.29.0/bin" >> "$GITHUB_PATH"
+
+      - name: Generate Allure report
+        if: always()
+        run: allure generate reports/allure-results -o allure-report --clean
 
       - name: Upload Allure report artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: allure-report
-          path: allure-history
+          path: allure-report
           retention-days: 30
 
       - name: Publish Allure report to GitHub Pages
@@ -56,4 +69,4 @@ jobs:
         if: always() && github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-history
+          publish_dir: allure-report
