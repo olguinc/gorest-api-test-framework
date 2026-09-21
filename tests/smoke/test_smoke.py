@@ -19,8 +19,8 @@ def test_create_and_delete_user_round_trip(users_client, new_user_payload):
     assert_status_code(delete_response, 204)
 
 
-def test_create_post_for_user(created_user, posts_client):
-    response = posts_client.list_posts_for_user(created_user["id"])
+def test_create_post_for_user(created_user, users_client):
+    response = users_client.list_posts_for_user(created_user["id"])
     assert_status_code(response, 200)
 
 
