@@ -102,9 +102,14 @@ allure open reports/allure-report
 ## CI/CD
 
 - **`ci.yml`** — runs on every push/PR: lint (ruff) → smoke tests → Allure
-  report build → uploaded as a build artifact, and published to
-  [GitHub Pages](https://olguinc.github.io/gorest-api-test-framework/) on
-  merges to `main`.
+  report build → uploaded as a build artifact. On pushes to `main` only, the
+  report is also published to
+  [GitHub Pages](https://olguinc.github.io/gorest-api-test-framework/),
+  **replacing** whatever was there before — so that URL always shows the
+  report from the latest successful run on `main`, never a stale one. Pull
+  request runs still generate a report, but only as a downloadable artifact
+  (Actions → the run → *Artifacts* section) — they don't touch the public
+  URL, so in-progress work never overwrites the published report.
 - **`nightly.yml`** — scheduled daily (+ manual trigger) run of the full suite
   against live GoRest, acting as a lightweight external-API health monitor
   independent of any code change in this repo.
